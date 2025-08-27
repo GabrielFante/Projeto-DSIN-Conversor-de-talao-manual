@@ -25,14 +25,17 @@ A solução consiste em um sistema integrado com **Inteligência Artificial**, c
 
 ## 📂 Organização das Pastas e Arquivos
 /projeto-dsin
-│── /backend        # Código do servidor (C#/ ASP.NET + integração com API da OpenAI)
-│── /frontend       # Interface do usuário (HTML, CSS, JavaScript puro)
-│── /database       # Scripts SQL, modelos de dados e diagramas do banco
-│── /docs           # Documentações, atas de reunião, diagramas, wireframes
-│── /ai             # Configuração e testes de OCR/IA utilizando API da OpenAI
-│── /containers     # Configurações de containers (Dockerfiles, docker-compose, etc.)
-│── /tests          # Testes automatizados
-│── README.md       # Documentação principal do projeto
+│── /backend # Código do servidor (C#/ ASP.NET + integração com API da OpenAI)
+│── /frontend # Interface do usuário (HTML, CSS, JavaScript puro)
+│── /database # Scripts SQL, modelos de dados e diagramas do banco
+│── /docs # Documentações, atas de reunião, diagramas, wireframes
+│── /ai # Configuração e testes de OCR/IA utilizando API da OpenAI
+│── /containers # Configurações de containers (Dockerfiles, docker-compose, etc.)
+│── /tests # Testes automatizados
+│ ├── unit # Testes unitários
+│ ├── integration # Testes de integração
+│ └── e2e # Testes ponta a ponta
+│── README.md # Documentação principal do projeto
 
 ---
 

@@ -15,7 +15,7 @@ A solução consiste em um sistema integrado com **Inteligência Artificial**, c
 ---
 
 ## 🛠️ Tecnologias Utilizadas
-- **Backend:** C#/ ASP.NET 
+- **Backend:** C#/ ASP.NET core
 - **Frontend:** HTML, CSS, JavaScript
 - **Banco de Dados:** SQLite 
 - **Inteligência Artificial:** API de OCR e NLP (OpenAI / Tesseract / outros testes)  

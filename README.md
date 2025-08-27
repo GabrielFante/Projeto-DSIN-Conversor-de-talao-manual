@@ -24,6 +24,7 @@ A solução consiste em um sistema integrado com **Inteligência Artificial**, c
 ---
 
 ## 📂 Organização das Pastas e Arquivos
+´´´
 /projeto-dsin
 │── /backend # Código do servidor (C#/ ASP.NET + integração com API da OpenAI)
 │── /frontend # Interface do usuário (HTML, CSS, JavaScript puro)
@@ -36,7 +37,7 @@ A solução consiste em um sistema integrado com **Inteligência Artificial**, c
 │ ├── integration # Testes de integração
 │ └── e2e # Testes ponta a ponta
 │── README.md # Documentação principal do projeto
-
+´´´
 ---
 
 ## 👥 Equipe de Desenvolvimento

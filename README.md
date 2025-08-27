@@ -15,9 +15,9 @@ A solução consiste em um sistema integrado com **Inteligência Artificial**, c
 ---
 
 ## 🛠️ Tecnologias Utilizadas
-- **Backend:** PHP (Laravel)  
-- **Frontend:** React, HTML, CSS, JavaScript, Bootstrap  
-- **Banco de Dados:** MySQL  
+- **Backend:** C#/ ASP.NET 
+- **Frontend:** HTML, CSS, JavaScript
+- **Banco de Dados:** SQLite 
 - **Inteligência Artificial:** API de OCR e NLP (OpenAI / Tesseract / outros testes)  
 - **Controle de Versão:** Git & GitHub  
 

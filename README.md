@@ -16,9 +16,9 @@ A solução consiste em um sistema integrado com **Inteligência Artificial**, c
 
 ## 🛠️ Tecnologias Utilizadas
 - **Backend:** C#/ ASP.NET core
-- **Frontend:** HTML, CSS, JavaScript
+- **Frontend:** HTML, CSS, JavaScript, React Native
 - **Banco de Dados:** SQLite 
-- **Inteligência Artificial:** API de OCR e NLP (OpenAI / Tesseract / outros testes)  
+- **Inteligência Artificial:** API de OCR
 - **Controle de Versão:** Git & GitHub  
 
 ---
@@ -43,7 +43,6 @@ A solução consiste em um sistema integrado com **Inteligência Artificial**, c
 ## 👥 Equipe de Desenvolvimento
 - Gabriel Fante
 - João Pedro Guerra
-- Igor Ryan
 - Vinicius Gomes
 - Guilherme Dalanora
 - Miguel Guarnetti

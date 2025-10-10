@@ -1,69 +1,94 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
-import { useRouter } from "expo-router";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function Dashboard() {
-  const router = useRouter();
-
-  const botoes = [
-    { titulo: "Talão Eletrônico", img: require("../assets/Phone.png"), rota: "/multar" },
-    { titulo: "Registro de Multas", img: require("../assets/BO.png"), rota: "/multas" },
-    { titulo: "Recolhimento", img: require("../assets/NoParking.png"), rota: "/recolhimento" },
-    { titulo: "Infraestrutura", img: require("../assets/Infra.png"), rota: "/infraestrutura" },
-    { titulo: "Transporte", img: require("../assets/Car.png"), rota: "/transporte" },
-    { titulo: "Vaga Especial", img: require("../assets/Cadeira.png"), rota: "/vagaespecial" },
-  ];
-
+export default function Dashboard({ navigation }: any) {
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
-        <Image source={require("../assets/logo.png")} style={styles.logo} resizeMode="contain" />
-        <TouchableOpacity onPress={() => router.replace("/login")}>
-          <Image source={require("../assets/Sair.png")} style={styles.exitLogo} resizeMode="contain" />
+        <Image source={require("../assets/Logo.png")} style={styles.logo} resizeMode="contain" />
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <MaterialIcons name="logout" size={32} />
         </TouchableOpacity>
       </View>
 
       {/* Botões */}
-      <ScrollView contentContainerStyle={styles.botaoContainer}>
-        {botoes.map((item, i) => (
-          <View key={i} style={styles.botaoETitulo}>
-            <TouchableOpacity style={styles.botao} onPress={() => router.push(item.rota)}>
-              <Image source={item.img} style={styles.icon} />
-            </TouchableOpacity>
-            <Text style={styles.titulo}>{item.titulo}</Text>
-          </View>
-        ))}
-      </ScrollView>
+      <View style={styles.grid}>
+        <TouchableOpacity
+          style={styles.card}
+          onPress={() => navigation.navigate("Talao")}
+        >
+          <MaterialIcons name="phone-android" size={40} color="#0057b7" />
+          <Text style={styles.title}>Talão Eletrônico</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.card}
+          onPress={() => navigation.navigate("Multas")}
+        >
+          <MaterialIcons name="book" size={40} color="#0057b7" />
+          <Text style={styles.title}>Registro de Multas</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.card}>
+          <MaterialCommunityIcons name="parking" size={40} color="#0057b7" />
+          <Text style={styles.title}>Recolhimento</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.card}>
+          <MaterialIcons name="build" size={40} color="#0057b7" />
+          <Text style={styles.title}>Infraestrutura</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.card}>
+          <MaterialIcons name="directions-car" size={40} color="#0057b7" />
+          <Text style={styles.title}>Transporte</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.card}>
+          <MaterialIcons name="accessible" size={40} color="#0057b7" />
+          <Text style={styles.title}>Vaga Especial</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f4f6f8" },
+  container: {
+    flex: 1,
+    backgroundColor: "#f4f6f8",
+    padding: 20,
+  },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 16,
-    backgroundColor: "#0057b7",
     alignItems: "center",
+    marginBottom: 30,
   },
-  logo: { width: 120, height: 40 },
-  exitLogo: { width: 30, height: 30 },
-  botaoContainer: { flexDirection: "row", flexWrap: "wrap", justifyContent: "center", padding: 16 },
-  botaoETitulo: { alignItems: "center", margin: 12, width: 120 },
-  botao: {
-    width: 80,
-    height: 80,
-    borderRadius: 20,
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  },
+  card: {
+    width: "48%",
     backgroundColor: "#fff",
-    justifyContent: "center",
+    padding: 20,
+    marginBottom: 20,
+    borderRadius: 12,
     alignItems: "center",
+    justifyContent: "center",
     shadowColor: "#000",
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 3,
-    marginBottom: 8,
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
-  icon: { width: 50, height: 50 },
-  titulo: { fontSize: 14, fontWeight: "600", color: "#333", textAlign: "center" },
+  title: {
+    marginTop: 10,
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#333",
+    textAlign: "center",
+  },
 });

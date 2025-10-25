@@ -7,7 +7,7 @@ public sealed class TicketBook
     public Guid DriverId { get; private set; }
     public Guid VehicleId { get; private set; }
 
-    public string ViolationCode { get; private set; } = default!; // ex: “ESTACIONAR_FAIXA_AMARELA”
+    public string ViolationCode { get; private set; } = default!;
     public string ViolationDescription { get; private set; } = default!;
     public DateTimeOffset OccurredAt { get; private set; }
     public string? Location { get; private set; }

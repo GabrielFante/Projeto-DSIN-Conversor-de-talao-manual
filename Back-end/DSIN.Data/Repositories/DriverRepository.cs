@@ -1,5 +1,5 @@
-using DSIN.Business.Interfaces.IRepositories;
-using DSIN.Business.Models;
+using DSIN.Bussiness.Interfaces.IRepositories;
+using DSIN.Bussiness.Models;
 using DSIN.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 

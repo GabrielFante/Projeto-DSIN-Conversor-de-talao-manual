@@ -7,7 +7,6 @@ public sealed class Agent
     public string Email { get; private set; } = default!;
     public string PasswordHash { get; private set; } = default!;
 
-    private Agent() { }
     public Agent(Guid id, string name, string email, string passwordHash)
     {
         Id = id; Name = name;

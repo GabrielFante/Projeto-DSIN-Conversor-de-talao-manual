@@ -11,8 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DSIN.Bussiness\DTOs\" />
-    <Folder Include="DSIN.Bussiness\Services\" />
     <Folder Include="DSIN.Data\Dependencies\" />
     <Folder Include="DSIN.Data\Contexts\" />
     <Folder Include="DSIN.Data\Repositories\" />

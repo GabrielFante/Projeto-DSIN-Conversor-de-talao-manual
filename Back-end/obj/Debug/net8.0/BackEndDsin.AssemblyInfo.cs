@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BackEndDsin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+89adfc7b79fec63ef1537e5e59d2e37640dd3954")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d8d4aeae22559145dcbd74176adc6bb13dcc3b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("BackEndDsin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BackEndDsin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

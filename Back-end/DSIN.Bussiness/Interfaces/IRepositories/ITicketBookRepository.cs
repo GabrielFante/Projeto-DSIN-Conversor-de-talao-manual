@@ -1,6 +1,6 @@
-using Dsin.Ticketing.Domain.Entities;
+using DSIN.Bussiness.Models;
 
-namespace DSIN.Bussiness.Interfaces.Repositories;
+namespace DSIN.Bussiness.Interfaces.IRepositories;
 
 public interface ITicketBookRepository
 {

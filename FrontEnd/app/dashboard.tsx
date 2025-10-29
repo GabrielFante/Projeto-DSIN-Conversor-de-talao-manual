@@ -43,7 +43,7 @@ export default function Dashboard() {
       <Animated.View style={{ flex: 1, opacity }}>
         <ImageBackground
           source={require('../assets/dsin/background.jpg')}
-          resizeMode="cover"
+          resizeMode="contain"
           style={styles.bg}
           imageStyle={{ opacity: 0.95 }}
         >

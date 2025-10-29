@@ -13,6 +13,7 @@ import {
 import Header from '@/src/components/Header';
 import { useFadeOnFocus } from '@/hooks/useFadeOnFocus';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { router } from 'expo-router'; // ✅ Adicionado
 
 const H_PADDING = 24;
 const COL_GAP = 28;
@@ -37,9 +38,21 @@ const ITEMS = [
 export default function Dashboard() {
   const opacity = useFadeOnFocus(280);
 
+  // ✅ Função para lidar com os cliques nos cards
+  const handlePress = (key: string, label: string) => {
+    if (key === 'talao') {
+      // Redireciona para a tela TicketListScreen
+      router.push('/TicketListScreen');
+      // Se quiser impedir voltar para o dashboard:
+      // router.replace('/TicketListScreen');
+      return;
+    }
+    alert(`Abrir: ${label}`);
+  };
+
   return (
     <SafeAreaView style={styles.safe}>
-     < Header showBack />
+      <Header showBack />
       <Animated.View style={{ flex: 1, opacity }}>
         <ImageBackground
           source={require('../assets/dsin/background.jpg')}
@@ -53,7 +66,7 @@ export default function Dashboard() {
                 <TouchableOpacity
                   key={it.key}
                   activeOpacity={0.92}
-                  onPress={() => alert(`Abrir: ${it.label}`)}
+                  onPress={() => handlePress(it.key, it.label)} // ✅ Atualizado
                   style={[styles.tile, { width: tileSize, height: tileSize }]}
                 >
                   <Image source={it.src} style={styles.tileIcon} />
@@ -80,9 +93,12 @@ const styles = StyleSheet.create({
   },
   brandWrap: { flexDirection: 'row', alignItems: 'center' },
   logoutBtn: {
-    width: 40, height: 40, borderRadius: 10,
+    width: 40,
+    height: 40,
+    borderRadius: 10,
     backgroundColor: '#4e616d',
-    alignItems: 'center', justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   logoutIcon: { width: 22, height: 22, tintColor: '#fff', resizeMode: 'contain' },
   bg: { flex: 1 },

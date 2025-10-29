@@ -9,6 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import Header from '@/src/components/Header';
 
 const Colors = {
@@ -74,20 +75,13 @@ const dateKey = (iso: string) => {
   return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
 };
 
-function matchesPlate(q: string, t: Ticket) {
-  return normalize(t.plate).includes(normalize(q));
-}
-function matchesVehicle(q: string, t: Ticket) {
-  return normalize(t.vehicle).includes(normalize(q));
-}
-function matchesReason(q: string, t: Ticket) {
-  return normalize(t.reason).includes(normalize(q));
-}
+function matchesPlate(q: string, t: Ticket) { return normalize(t.plate).includes(normalize(q)); }
+function matchesVehicle(q: string, t: Ticket) { return normalize(t.vehicle).includes(normalize(q)); }
+function matchesReason(q: string, t: Ticket) { return normalize(t.reason).includes(normalize(q)); }
 function matchesDate(q: string, t: Ticket) {
   const { day } = fmtDate(t.date);
   const ymd = day.split('/').reverse().join('-');
   const norm = q.replace(/\s+/g, '');
-
   if (/^\d{2}\/\d{2}\/\d{4}$/.test(norm)) return day === norm;     // dd/mm/yyyy
   if (/^\d{2}\/\d{2}$/.test(norm))         return day.startsWith(norm); // dd/mm
   if (/^\d{4}-\d{2}-\d{2}$/.test(norm))    return ymd === norm;     // yyyy-mm-dd
@@ -108,10 +102,7 @@ function uniqueBy<T>(arr: T[], key: (x: T) => string) {
   const out: T[] = [];
   for (const it of arr) {
     const k = key(it);
-    if (!seen.has(k)) {
-      seen.add(k);
-      out.push(it);
-    }
+    if (!seen.has(k)) { seen.add(k); out.push(it); }
   }
   return out;
 }
@@ -236,6 +227,7 @@ const SuggestionChip = ({ kind }: { kind: SuggestionKind }) => {
 export default function TicketListScreen() {
   const [query, setQuery] = useState('');
   const [showSug, setShowSug] = useState(true);
+  const router = useRouter();
 
   const suggestions = useMemo(() => buildSuggestions(query, DATA, 8), [query]);
 
@@ -276,7 +268,26 @@ export default function TicketListScreen() {
 
   return (
     <View style={styles.screen}>
-      <Header showBack />
+      <Header
+        showBack
+        rightSlot={
+          <TouchableOpacity
+            style={{
+              width: 36, height: 36, borderRadius: 18,
+              alignItems: 'center', justifyContent: 'center',
+              backgroundColor: 'rgba(255,255,255,0.08)',
+              borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)',
+            }}
+            onPress={() => router.push('/captureScreen')}
+            hitSlop={{ top: 8, left: 8, right: 8, bottom: 8 }}
+            accessibilityRole="button"
+            accessibilityLabel="Abrir câmera"
+          >
+            <Ionicons name="camera-outline" size={20} color="#EAF0F5" />
+          </TouchableOpacity>
+        }
+      />
+
       <View style={styles.searchRow}>
         <View style={styles.searchBox}>
           <Ionicons name="search" size={18} color={Colors.textMuted} />
@@ -293,6 +304,7 @@ export default function TicketListScreen() {
           <MaterialIcons name="filter-list" size={22} color={Colors.textDark} />
         </TouchableOpacity>
       </View>
+
       {showSug && suggestions.length > 0 && (
         <View style={styles.suggestBox}>
           <FlatList
@@ -308,7 +320,9 @@ export default function TicketListScreen() {
           />
         </View>
       )}
+
       <TableHeader />
+
       <SectionList
         sections={sections}
         keyExtractor={(item) => item.id}

@@ -1,4 +1,3 @@
-// app/dashboard.tsx
 import React from 'react';
 import {
   View,
@@ -7,14 +6,13 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
-  SafeAreaView,
   Dimensions,
   Platform,
-  Animated, // usamos de fato
+  Animated,
 } from 'react-native';
-import { useRouter } from 'expo-router';
+import Header from '@/src/components/Header';
 import { useFadeOnFocus } from '@/hooks/useFadeOnFocus';
-import Logo from '../assets/dsin/logo.svg';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const H_PADDING = 24;
 const COL_GAP = 28;
@@ -37,26 +35,11 @@ const ITEMS = [
 ];
 
 export default function Dashboard() {
-  const router = useRouter();
-  const opacity = useFadeOnFocus(280); // <- usamos este valor
+  const opacity = useFadeOnFocus(280);
 
   return (
     <SafeAreaView style={styles.safe}>
-      {/* HEADER */}
-      <View style={styles.header}>
-        <View style={styles.brandWrap}>
-          <Logo width={120} height={28} />
-        </View>
-        <TouchableOpacity
-          onPress={() => router.replace('/login')}
-          activeOpacity={0.9}
-          style={styles.logoutBtn}
-        >
-          <Image source={require('../assets/dsin/sair.png')} style={styles.logoutIcon} />
-        </TouchableOpacity>
-      </View>
-
-      {/* FADE no conteúdo */}
+     < Header showBack />
       <Animated.View style={{ flex: 1, opacity }}>
         <ImageBackground
           source={require('../assets/dsin/background.jpg')}

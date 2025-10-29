@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { View, StyleSheet, Dimensions, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import RoundIconButton from '@/src/components/RoundIconButton';
@@ -34,7 +34,9 @@ export default function CaptureScreen() {
       if (photo?.uri) {
         router.push({ pathname: '/review', params: { uri: photo.uri } });
       }
-    } catch (_) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -46,12 +48,6 @@ export default function CaptureScreen() {
         onCameraReady={() => setReady(true)}
       />
 
-      {/* botão de “galeria” no topo direito (ícone apenas) */}
-      <View style={styles.topRight}>
-        <RoundIconButton lib="mci" name="image-outline" />
-      </View>
-
-      {/* barra inferior com voltar, disparo e galeria */}
       <View style={styles.bottomBar}>
         <RoundIconButton name="arrow-back" onPress={() => router.back()} />
 

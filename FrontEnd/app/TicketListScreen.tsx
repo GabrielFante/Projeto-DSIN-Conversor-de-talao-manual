@@ -7,8 +7,9 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import { Ionicons, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import Header from "@/src/components/Header";
 
 const COLORS = {
   background: "#F5F7F8",
@@ -71,16 +72,7 @@ export default function TicketListScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          <MaterialCommunityIcons name="arrow-left" size={24} color="#fff" />
-          <Text style={styles.logoText}>DSIN</Text>
-        </View>
-        <TouchableOpacity>
-          <Ionicons name="log-out-outline" size={24} color="#fff" />
-        </TouchableOpacity>
-      </View>
-
+      <Header showBack />
       <View style={styles.searchBar}>
         <Ionicons name="search-outline" size={20} color={COLORS.text} />
         <TextInput

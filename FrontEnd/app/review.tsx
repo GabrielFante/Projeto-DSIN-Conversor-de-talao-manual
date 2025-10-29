@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import RoundIconButton from '@/src/components/RoundIconButton';
 
-const { width, height } = Dimensions.get('window');
 const PALETTE = {
   green: '#22c55e',
   red: '#ef4444',

@@ -43,7 +43,6 @@ type Ticket = {
   priority: Priority;
 };
 
-// ——— mock ———
 const DATA: Ticket[] = [
   { id: '1', vehicle: 'VW Kombi', plate: 'LVW-9112', reason: 'Veículo transitando em velocidade baixa', date: '2025-05-19T10:38:00Z', priority: 'Em Análise' },
   { id: '2', vehicle: 'Toyota Corolla', plate: 'ONM-5496', reason: 'Veículo acima da Velocidade', date: '2025-05-19T08:27:00Z', priority: 'Em Análise' },
@@ -82,9 +81,9 @@ function matchesDate(q: string, t: Ticket) {
   const { day } = fmtDate(t.date);
   const ymd = day.split('/').reverse().join('-');
   const norm = q.replace(/\s+/g, '');
-  if (/^\d{2}\/\d{2}\/\d{4}$/.test(norm)) return day === norm;     // dd/mm/yyyy
-  if (/^\d{2}\/\d{2}$/.test(norm))         return day.startsWith(norm); // dd/mm
-  if (/^\d{4}-\d{2}-\d{2}$/.test(norm))    return ymd === norm;     // yyyy-mm-dd
+  if (/^\d{2}\/\d{2}\/\d{4}$/.test(norm)) return day === norm;  
+  if (/^\d{2}\/\d{2}$/.test(norm))         return day.startsWith(norm); 
+  if (/^\d{4}-\d{2}-\d{2}$/.test(norm))    return ymd === norm;
   return false;
 }
 function matchesTime(q: string, t: Ticket) {
@@ -275,7 +274,7 @@ export default function TicketListScreen() {
             style={{
               width: 36, height: 36, borderRadius: 18,
               alignItems: 'center', justifyContent: 'center',
-              backgroundColor: 'rgba(255,255,255,0.08)',
+              backgroundColor: '#FFC800',
               borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)',
             }}
             onPress={() => router.push('/captureScreen')}

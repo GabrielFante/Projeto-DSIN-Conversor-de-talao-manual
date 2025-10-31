@@ -13,7 +13,7 @@ import {
 import Header from '@/src/components/Header';
 import { useFadeOnFocus } from '@/hooks/useFadeOnFocus';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { router } from 'expo-router'; // ✅ Adicionado
+import { router } from 'expo-router'; 
 
 const H_PADDING = 24;
 const COL_GAP = 28;
@@ -38,13 +38,9 @@ const ITEMS = [
 export default function Dashboard() {
   const opacity = useFadeOnFocus(280);
 
-  // ✅ Função para lidar com os cliques nos cards
   const handlePress = (key: string, label: string) => {
     if (key === 'talao') {
-      // Redireciona para a tela TicketListScreen
       router.push('/TicketListScreen');
-      // Se quiser impedir voltar para o dashboard:
-      // router.replace('/TicketListScreen');
       return;
     }
     alert(`Abrir: ${label}`);
@@ -66,7 +62,7 @@ export default function Dashboard() {
                 <TouchableOpacity
                   key={it.key}
                   activeOpacity={0.92}
-                  onPress={() => handlePress(it.key, it.label)} // ✅ Atualizado
+                  onPress={() => handlePress(it.key, it.label)}
                   style={[styles.tile, { width: tileSize, height: tileSize }]}
                 >
                   <Image source={it.src} style={styles.tileIcon} />

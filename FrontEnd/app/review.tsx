@@ -15,7 +15,7 @@ export default function ReviewScreen() {
   const router = useRouter();
 
   const sendToAnalysis = () => {
-    // aqui você pode enviar a `uri` para o Kafka/Backend
+    //trocar pela requisição depois de implementar o backend
     alert('Enviado para análise!');
   };
 
@@ -23,14 +23,10 @@ export default function ReviewScreen() {
     <View style={styles.container}>
       {!!uri && <Image source={{ uri }} style={styles.photo} resizeMode="cover" />}
 
-      {/* moldura amarela */}
       <View style={styles.frame} pointerEvents="none" />
 
-      {/* barra de ações */}
       <View style={styles.actions}>
-        <RoundIconButton name="arrow-back" onPress={() => router.back()} />
-        <RoundIconButton lib="mat" name="check" bg={PALETTE.green} />
-        <RoundIconButton lib="mat" name="close" bg={PALETTE.red} />
+        <RoundIconButton lib="mat" name="close" bg={PALETTE.red} onPress={() => router.back()} />
         <RoundIconButton lib="ion" name="cloud-upload-outline" bg={PALETTE.yellow} color="#2F3C46" onPress={sendToAnalysis} />
       </View>
     </View>

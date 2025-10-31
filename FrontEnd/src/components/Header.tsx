@@ -5,7 +5,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 type Props = {
   showBack?: boolean;
-  /** Slot opcional para renderizar um botão/ícone do lado direito do header */
   rightSlot?: React.ReactNode;
 };
 
@@ -14,7 +13,6 @@ export default function Header({ showBack = false, rightSlot }: Props) {
 
   return (
     <View style={styles.container}>
-      {/* ESQUERDA: Voltar (ou espaço para manter a logo centralizada) */}
       {showBack ? (
         <TouchableOpacity
           onPress={() => router.back()}
@@ -29,7 +27,6 @@ export default function Header({ showBack = false, rightSlot }: Props) {
         <View style={styles.sidePlaceholder} />
       )}
 
-      {/* CENTRO: Logo */}
       <View style={styles.center}>
         <Image
           source={require('../../assets/dsin/Dsin.png')}
@@ -38,7 +35,6 @@ export default function Header({ showBack = false, rightSlot }: Props) {
         />
       </View>
 
-      {/* DIREITA: rightSlot (ou placeholder para manter alinhamento) */}
       <View style={styles.sideBox}>
         {rightSlot ?? <View style={styles.sidePlaceholder} />}
       </View>
